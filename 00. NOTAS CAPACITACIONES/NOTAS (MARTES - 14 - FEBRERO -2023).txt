@@ -1,0 +1,40 @@
+Capacitacion Dia #2: Martes - 14 - Febrero - 2023
+
+- PIPELINE DE UN PROYECTO WEB:
+  Es un proceso que se debe llevar paso a paso para realizar un proyecto profesional de desarrollo web.
+
+- FASES:
+
+- FASE #1: PLANEACION Y DISENO.
+
+* BRIEF: Es la entrevista o reunion con el cliente donde se recopila la informacion de lo que necesita en su proyecto, objetivos a cumplir, cual es la competencia que tiene, etc.
+* COTIZACION: Es definir un precio o tarifa del proyecto, el cual, debe ser aprobado por el cliente y por el equipo de proyecto.
+* CONCEPTO: Es definir la comunicacion visual que se desea transmitir a traves del proyecto web.
+* SITEMAP: Son los niveles de profundidad que tendra el desarrollo del proyecto.
+* WIREFRAME (Esqueleto): Es la estructura de cada uno de los elementos visuales que tendra el desarrollo del sistema
+* LAYOUTS: Son plantillas o prototipos semifuncionales del sistema, este se obtiene con base al concepto definido junto con el cliente.
+
+- FASE #2: DESARROLLO FRONTEND.
+
+* DESARROLLO DE PLANTILLAS EN LENGUAJES DE PROGRAMACION DE LADO DEL CLIENTE:
+    
+    * HTML 5.
+    * CSS 3.
+    * JavaScript.
+    * JQuery.
+    * Bootstrap.
+    * Angular.
+    * React.
+
+- FASE #3: DESARROLLO BACKEND
+
+* DESARROLLO DEL PROYECTO DE LADO DEL SERVIDOR:
+    
+    * PHP.
+    * MySQL.
+    * POO.
+    * Patron MVC.
+    * Node JS + Express JS
+    * MongoDB.
+    * Laravel.
+    * Codelgniter.

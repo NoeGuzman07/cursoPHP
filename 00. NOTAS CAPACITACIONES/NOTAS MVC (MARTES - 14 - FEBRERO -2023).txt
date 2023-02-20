@@ -1,0 +1,12 @@
+Capacitacion Dia #2: Martes - 14 - Febrero - 2023
+
+- NOTAS PATRON MVC:
+
+- El patron MVC (Modelo-Vista-Controlador) es un tipo de diseno que separa
+  en capas bien definidas el desarrollo de una aplicacion, esas partes tres:
+
+- El Modelo es encargado de la logica de la aplicacion y la conexion con la base de datos.
+
+- El controlador es el encargado de gestionar las peticiones del usuario, procesarlas invocando al modelo y mostrarlas al usuario a traves de las vistas.
+
+- La Vista es la reponsable de mostrar al usuario el resultado que obtienen del Modelo a traves del Controlador.

@@ -1,0 +1,10 @@
+CAPACITACION DIA #5 - VIERNES-17-FEBRERO-2023
+CANCION DEL DIA: HOLLYWOOD'S BLEEDING - POST MALONE
+
+* TEMA #1: CONEXION A LA BASE DE DATOS MEDIANTE LA CLASE PDO.
+
+- Clase PDO:
+Es una clase de PHP que nos permite a encapsular la conexion que se haga con la base de datos y poder instanciar esa clase y poderla utilizar en cualquier otro archivo.
+
+En otras palabras, PDO es una clase de PHP que nos permite establecer conexion con la base de datos.
+

@@ -1,0 +1,24 @@
+//Capacitacion Dia #2: Martes - 14 - Febrero - 2023
+
+//NOTAS POO:
+
+//Abstraccion:
+//Aislacio de un elemento de su contexto. Define las caracteristicas escenciales de un objeto.
+
+//Encapsulamiento:
+//Reune al mismo nivel de abstraccion, a todos los elementos que puedan considerarse pertenecientes a una misma entidad.
+
+//Modularidad:
+//Caracteristicas que permite dividir una aplicacion en varias partes mas pequenas (denominadas modulos), independientes unas de otras.
+
+//Ocultacion (aislamiento):
+//Los objetos estan aislados del exterior, protegiendo a sus propiedades para no ser modificadas por aquellos que no tengan derecho a acceder a las mismas.
+
+//Polimorfismo:
+//Es la capacidad que da a diferentes objetos, la posibilidad de contar con metodos, propiedades y atributos de igual nombre, sin que los de un objeto interfieran con el otro.
+
+//Herencia:
+//Es la relacion existente entre dos o mas clases, donde una es la principal (padre) y otras son secundarias y dependen (heredan) de ellas (clases "hijas"), donde a la vez, los objetos heredan las caracteristicas de los objetos de los cuales heredan.
+
+//Recoleccion de basura:
+//Es la tecnica que consiste en destruir aquellos objetos cuando ya no son necesarios, liberandolos de la memoria.

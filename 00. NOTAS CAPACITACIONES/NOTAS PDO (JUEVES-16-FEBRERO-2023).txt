@@ -1,0 +1,42 @@
+* CAPACITACION DIA #4: (JUEVES-16-FEBRERO-2023)
+* MINUTA #1: (10:22 AM) VIMOS EN LA OFICINA EL PARTIDO DE FUTBOL "BARCELONA VS MANCHESTER UNITED DE LA UEFA EUROPA LEAGUE".
+
+* TEMA #1: PDO.
+
+- La extension PDO (PHP Data Objects) de PHP consiste en desarrollar una capa de abstraccion para acceder a diferentes tipos de bases de datos.
+
+- Utilizando PDO se logran estandarizar los diferentes mecanismo para realizar la conexion a una base de datos, asi como, recuperar y modificar informacion.
+
+- Sin embargo, PDO no estandariza SQL, lo que significa que se debe lidiar con las diferentes sintaxis de las instrucciones en cada administrador de bases de datos.
+
+- NOTA: PDO nos ayudara para establecer conexion con una base de datos donde podremos aplicar el Sistema CRUD (Create, Read, Update, Delete).
+
+* TEMA #2: MySQL.
+
+- MySQL es un sistema para la gestion de bases de datos relacionadas con mas de seis millones de instalaciones en el mundo, y que por lo tanto es el mas extendido dentro de las aplicaciones.
+
+- MySQL funciona como software libre dentro del esquema de licencias GNU GPL.
+
+- MySQL es muy utilizado en aplicaciones web como WordPress, Drupal, Joomla.
+
+- MySQL es una base de datos muy rapida en la lectura, lo que la hace ideal para este tipo de aplicaciones.
+
+- COMANDOS (QUERIES) PARA HACER UN CRUD EN MySQL:
+
+- CREATE:
+
+    INSERT INTO registros(nombre, email, password) VALUES ("Noe Norberto Guzman Lopez", "noe.guzman@uabc.edu.mx", "noe1234");
+
+- READ:
+
+    SELECT * FROM registros WHERE id = 1;
+
+- UPDATE:
+
+    UPDATE registros SET nombre = 'Noé Norberto Guzmán López' WHERE registros.id = 1
+
+    UPDATE registros SET nombre = 'Magui Gonzalez Ramirez' WHERE registros.id = 3;
+
+- DELETE:
+
+    DELETE FROM registros WHERE registros.id = 5
