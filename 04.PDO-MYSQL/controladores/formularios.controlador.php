@@ -58,7 +58,16 @@ class ControladorFormularios {
 
         if (isset($_POST["actualizarNombre"])) {
 
-            if($_POST["actualizarPassword"]!="") {
+            if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["actualizarNombre"]) &&
+               preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["actualizarEmail"])) {
+
+                $usuario = ModeloFormularios::mdlSeleccionarRegistros("registros", "token", $_POST["tokenUsuario"]);
+            
+                $compararToken = md5($usuario["nombre"]."+".$usuario["email"]);
+
+            if($compararToken == $_POST["tokenUsuario"]) {
+            
+                if($_POST["actualizarPassword"]!="") {
 
                 $password = $_POST["actualizarPassword"];
 
@@ -83,7 +92,36 @@ class ControladorFormularios {
 
             return $respuesta;
 
+        } else {
+
+            $respuesta = "error";
+
+            return $respuesta;
+
+            echo '<script>                
+                        if(window.history.replaceState) {
+                            window.history.replaceState(null, null, window.location.href);
+                        }
+                      </script>';
+
         }
+
+    } else {
+
+        $respuesta = "error";
+
+        return $respuesta;
+
+        echo '<script>                
+                        if(window.history.replaceState) {
+                            window.history.replaceState(null, null, window.location.href);
+                        }
+                      </script>';
+
+    }
+
+}
+
 }
 
     
