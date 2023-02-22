@@ -81,7 +81,7 @@ class ModeloFormularios {
 
 			return "OK";
 
-		}else{
+		} else {
 
 			print_r(Conexion::conectar()->errorInfo());
 

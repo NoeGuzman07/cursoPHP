@@ -61,7 +61,7 @@ $usuarios = ControladorFormularios::ctrSeleccionarRegistros(null, null);
 
                         <form method="POST">
 
-                            <input type="hidden" value="<?php echo $value["token"]; ?>" name="eliminarRegistro">
+                        <input type="hidden" value="<?php echo $value["token"]; ?>" name="eliminarRegistro">
 
                             <button type="submit" class="btn btn-danger"> Eliminar <i class="fa-solid fa-trash"></i></button>
 
