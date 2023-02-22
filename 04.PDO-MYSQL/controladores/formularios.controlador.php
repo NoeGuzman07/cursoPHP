@@ -7,20 +7,37 @@ class ControladorFormularios {
 
         if (isset($_POST["registroNombre"])) {
 
+            //condicion de PHP que nos ayuda a evitar colocar codigos de JavaScript que puedan alterar el sistema
+            //En esta condicion validamos que los datos de los usuarios puede aceptar estos caracteres para subirlos a la base de datos
+            if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["registroNombre"]) &&
+			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["registroEmail"]) &&
+			   preg_match('/^[0-9a-zA-Z]+$/', $_POST["registroPassword"])) {
+
             //nombre de la tabla que se encuentren dentro de la base de datos
             $tabla = "registros";
+
+            //Uso de TOKENS para encriptar la informacion
+            $token = md5($_POST["registroNombre"]."+".$_POST["registroEmail"]);
             
             //Arreglo con los datos de la tabla REGISTROS
-            $datos = array(
-                "nombre" => $_POST["registroNombre"],
-                "email" => $_POST["registroEmail"],
-                "password" => $_POST["registroPassword"]
+            $datos = array("token" => $token,
+                           "nombre" => $_POST["registroNombre"],
+                           "email" => $_POST["registroEmail"],
+                           "password" => $_POST["registroPassword"]
             );
 
             //Se instancia el modelo
             $respuesta = ModeloFormularios::mdlRegistro($tabla, $datos);
 
             return $respuesta;
+
+            } else {
+
+                $respuesta = "error";
+
+                return $respuesta;
+
+            }
 
         }
 
@@ -56,11 +73,10 @@ class ControladorFormularios {
             
             //Arreglo con los datos de la tabla REGISTROS
             $datos = array(
-                "id" => $_POST["idUsuario"],
+                "token" => $_POST["tokenUsuario"],
                 "nombre" => $_POST["actualizarNombre"],
                 "email" => $_POST["actualizarEmail"],
-                "password" => $_POST["actualizarPassword"]
-            );
+                "password" => $password);
 
             //Se instancia el modelo
             $respuesta = ModeloFormularios::mdlActualizarRegistro($tabla, $datos);
@@ -68,19 +84,26 @@ class ControladorFormularios {
             return $respuesta;
 
         }
+}
 
-    }
+    
 
 
     //////CREACION METODO PARA ELIMINAR USUARIOS DE LA TABLA "REGISTROS"
-    public function ctrEliminarRegistro() {
+	public function ctrEliminarRegistro(){
 
-        if(isset($_POST["eliminarRegistro"])) {
+		if(isset($_POST["eliminarRegistro"])){
 
-            $tabla = "registros";
-            $valor = $_POST["eliminarRegistro"];
+			$usuario = ModeloFormularios::mdlSeleccionarRegistros("registros", "token",  $_POST["eliminarRegistro"]);
 
-            $respuesta = ModeloFormularios::mdlEliminarRegistro($tabla, $valor);
+			$compararToken = md5($usuario["nombre"]."+".$usuario["email"]);
+
+			if($compararToken == $_POST["eliminarRegistro"]){
+
+				$tabla = "registros";
+				$valor = $_POST["eliminarRegistro"];
+
+				$respuesta = ModeloFormularios::mdlEliminarRegistro($tabla, $valor);
 
             if($respuesta == "OK") {
 
@@ -96,6 +119,8 @@ class ControladorFormularios {
         }
 
     }
+
+}
 
 
     //CREACION METODO LOGIN (INICIO DE SESION AL SISTEMA) CON LOS USUARIOS DE LA TABLA "REGISTROS"

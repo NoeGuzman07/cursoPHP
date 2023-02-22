@@ -60,6 +60,23 @@
             echo '<div class="alert alert-success">El usuario ha sido registrado en el sistema</div>';
         }
 
+        if ($registro == "error") {
+
+            //Este script permite limpiar los datos que se envian a traves del Metodo POST
+            //NOTA: Este script se puede utilizar en diferentes proyectos
+            echo '<script>
+                
+                        if(window.history.replaceState) {
+                        
+                            window.history.replaceState(null, null, window.location.href);
+
+                        }
+                
+                    </script>';
+
+            echo '<div class="alert alert-danger">Error, no es permitdo caracteres especiales</div>';
+        }
+
         ?>
 
         <center><button type="submit" class="btn btn-primary">Registrar usuario</button></center>

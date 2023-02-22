@@ -1,0 +1,15 @@
+NOTAS CAPACITACION DIA #2 SEMANA #2 (MARTES-21-FEBRERO-2023)
+
+* ATAQUE CSFR (CROSS-SITE REQUEST FORGERIES):
+
+- Tambien llamados "Ataques CSRF" se producen cuando el atacante provoca que el usuario ejecute una accion de forma no intencionada en una aplicacion en la que habia iniciado sesion.
+
+- Cualquier accion que pueda realizar un usuario cuando esta logeado en un sitio web, la puede realizar tambien el atacante, ya sea actualizar su perfil, anadir objetos a la cesta de la compra, postear mensajes en un foro o cualquier otra cosa.
+
+* TOKEN:
+
+- Es un elemento encriptado
+
+* PHP md5():
+
+- Es una funcion de PHP que nos permite encriptar elementos de una aplicacion garantizando la seguridad de la informacion que utilice el usuario final.

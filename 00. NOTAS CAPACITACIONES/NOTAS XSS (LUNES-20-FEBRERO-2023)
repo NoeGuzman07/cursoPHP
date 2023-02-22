@@ -1,0 +1,25 @@
+NOTAS CAPACITACION DIA #1 - SEMANA 2 (LUNES-20-FEBRERO-2023)
+
+* CROSS-SITE SCRIPTING:
+
+O tambien llamado "Ataque XSS" es un tipo de ataque, el cual ocurren cuando un atacante es capaz de inyectar un script normalmente codigo de JavaScript
+en el output de una aplicacion web, de forma que se ejecuta en el navegador del cliente.
+
+Los ataques se producen principalmente por validar incorrectamente datos de usuario, y suelen inyectar mediante un formulario web o mediante
+un enlace alterado.
+
+* Scripts que se utilizando para realizar ataque en las aplicaciones:
+
+- <script>alert("hacked")</script>
+
+- <script>setInterval(function(){},1000)</script>
+
+* Para prevenir ataque en aplicaciones php utilizar la funcion preg_match.
+
+- Es una funcion que realiza una comparacion de caracteres de los scripts con una expresion regular.
+
+- Consultar la siguiente pagina para saber mas sobre la funcion preg_match: https://www.php.net/manual/es/function.preg-match.php
+
+* Para evitar ataque con codigo JavaScript utilizar la funcion a traves de una condicion la funcion preg match y utilizar expresiones regulares de php.
+
+- Consultar la siguiente pagina para saber mas sobre las expresiones regulares de php: https://diego.com.es/expresiones-regulares-en-php
