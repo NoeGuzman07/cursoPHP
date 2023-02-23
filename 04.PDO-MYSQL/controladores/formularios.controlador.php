@@ -172,6 +172,8 @@ class ControladorFormularios {
                 //Si el usuario ingreso correctamente al sistema se redirigira hacia la PAGINA DE INICIO DEL SISTEMA (LINEA 68)
                 if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]) {
 
+                    $actualizarIntentosFallidos = ModeloFormularios::mdlActualizarIntentosFallidos($tabla, 0, $respuesta["token"]);
+
                     $_SESSION["validarIngreso"] = "OK";
 
                     echo '<script>                
@@ -182,6 +184,20 @@ class ControladorFormularios {
                           </script>';
                 
                 } else {
+
+                    if($respuesta["intentos_fallidos"] < 3) {
+
+                    $tabla = "registros";
+
+                    $intentos_fallidos = $respuesta["intentos_fallidos"]+1;
+                    //echo '<pre>'; print_r($intentos_fallidos); echo '</pre>';
+                    $actualizarIntentosFallidos = ModeloFormularios::mdlActualizarIntentosFallidos($tabla, $intentos_fallidos, $respuesta["token"]);
+
+                    } else {
+
+                        echo '<div class="alert alert-warning">RECAPTCHA Debes validar que no eres un robot</div>';
+
+                    }
                     
                     //Este script permite limpiar los datos que se envian a traves del Metodo POST
                     //NOTA: Este script se puede utilizar en diferentes proyectos

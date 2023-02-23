@@ -91,4 +91,22 @@ class ModeloFormularios {
 
 	}
 
+        //METODO ACTUALIZAR INTENTOS FALLIDOS
+        static public function mdlActualizarIntentosFallidos($tabla, $valor, $token) {
+
+            //$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, email=:email, password=:password WHERE token=:token");
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET intentos_fallidos = :intentos_fallidos WHERE token = :token");
+
+            //NOTA: Esta es la forma en la que tenemos que escribir la sintaxis para poder subir informacion a la base de datos
+            $stmt->bindParam(":intentos_fallidos", $valor, PDO::PARAM_INT);
+            $stmt->bindParam(":token", $token, PDO::PARAM_STR);
+    
+            if ($stmt->execute()) {
+                return "OK";
+            } else {
+                print_r(Conexion::conectar()->errorInfo());
+            }
+    
+    }
+
 }
