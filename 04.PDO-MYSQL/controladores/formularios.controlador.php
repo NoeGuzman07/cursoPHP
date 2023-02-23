@@ -65,7 +65,7 @@ class ControladorFormularios {
             
                 $compararToken = md5($usuario["nombre"]."+".$usuario["email"]);
 
-            if($compararToken == $_POST["tokenUsuario"]) {
+            if($compararToken == $_POST["tokenUsuario"] && $_POST["idUsuario"] == $usuario["id"]) {
             
                 if($_POST["actualizarPassword"]!="") {
 
@@ -79,13 +79,15 @@ class ControladorFormularios {
 
             //nombre de la tabla que se encuentren dentro de la base de datos
             $tabla = "registros";
+
+            $actualizarToken = md5($_POST["actualizarNombre"]."+".$_POST["actualizarEmail"]);
             
             //Arreglo con los datos de la tabla REGISTROS
-            $datos = array(
-                "token" => $_POST["tokenUsuario"],
-                "nombre" => $_POST["actualizarNombre"],
-                "email" => $_POST["actualizarEmail"],
-                "password" => $password);
+            $datos = array( "id" => $_POST["idUsuario"],
+									"token" => $actualizarToken,
+									"nombre" => $_POST["actualizarNombre"],
+						           "email" => $_POST["actualizarEmail"],
+						           "password" => $password);
 
             //Se instancia el modelo
             $respuesta = ModeloFormularios::mdlActualizarRegistro($tabla, $datos);
@@ -98,12 +100,6 @@ class ControladorFormularios {
 
             return $respuesta;
 
-            echo '<script>                
-                        if(window.history.replaceState) {
-                            window.history.replaceState(null, null, window.location.href);
-                        }
-                      </script>';
-
         }
 
     } else {
@@ -111,12 +107,6 @@ class ControladorFormularios {
         $respuesta = "error";
 
         return $respuesta;
-
-        echo '<script>                
-                        if(window.history.replaceState) {
-                            window.history.replaceState(null, null, window.location.href);
-                        }
-                      </script>';
 
     }
 

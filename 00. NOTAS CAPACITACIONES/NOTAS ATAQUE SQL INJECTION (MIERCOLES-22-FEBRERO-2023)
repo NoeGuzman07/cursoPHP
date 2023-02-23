@@ -1,0 +1,25 @@
+NOTAS CAPACITACION DIA #3 SEMANA #2:
+
+* ATAQUE SQL INJECTION:
+
+- Un ataque SQL INJECTION se produce cuando el atacante intenta inyectar codigo SQL malicioso en la base de datos de la victima y fuerza a la base de datos a ejecutar esa sentencia.
+
+- Las sentencias pueden hacer cosas como destriuir las tablas de la base de datos o extraer informacion privada como contrasenas.
+
+* ATAQUE CODE INJECTION:
+
+- Es un tipo de ataque que permite al atacante inyectar codigo fuente en la aplicacion de forma que es interpretado y ejecutado.
+
+- El codigo fuente se puede insertar directamente desde un input, o la aplicacion web puede ser manipulada para que lo cargue desde el sistema de archivos local o desde una fuente externa como una URL.
+
+- Cuando la inyeccion se produce por la inclusion de un archivo externo se le denomina "Remote File Inclusion", RFI, y su objetivo suele ser el de inyectar codigo.
+
+* BRUTE FORCE ROBOTS:
+
+- El termino "Brute Force" se traduce como "Fuerza Bruta".
+
+- El metodo de fuerza bruta recibe este nombre porque esta basado en probar todas las soluciones posibles o muchas de ellas, siendo conocido tambien como "Busqueda Exhaustiva" y utilizando, especialmente, cuando no hay otros algoritmos disponibles.
+
+- Esta tecnica es utilizada por hackers para descifrar contrasenas y, de este modo, obtener acceso a datos externos.
+
+- Para ello se utiliza un software con un algoritmo simple que realiza la sucesion de varias combinaciones de caracteres compuestos por digitos, espacios y letras hasta una longitud maxima definida.
