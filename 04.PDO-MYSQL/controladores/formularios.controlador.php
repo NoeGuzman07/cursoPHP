@@ -18,13 +18,15 @@ class ControladorFormularios {
 
             //Uso de TOKENS para encriptar la informacion
             $token = md5($_POST["registroNombre"]."+".$_POST["registroEmail"]);
+
+            //Encriptacion de contrasena
+            $encriptarPassword = crypt($_POST["registroPassword"], '$2a$07$usesomesillystringforsalt$');
             
             //Arreglo con los datos de la tabla REGISTROS
             $datos = array("token" => $token,
                            "nombre" => $_POST["registroNombre"],
                            "email" => $_POST["registroEmail"],
-                           "password" => $_POST["registroPassword"]
-            );
+                           "password" => $encriptarPassword);
 
             //Se instancia el modelo
             $respuesta = ModeloFormularios::mdlRegistro($tabla, $datos);
@@ -69,7 +71,11 @@ class ControladorFormularios {
             
                 if($_POST["actualizarPassword"]!="") {
 
-                $password = $_POST["actualizarPassword"];
+                    if(preg_match('/^[0-9a-zA-Z]+$/', $_POST["actualizarPassword"])){
+
+                        $password = crypt($_POST["actualizarPassword"], '$2a$07$usesomesillystringforsalt$');
+
+                    }
 
             } else {
 
@@ -167,10 +173,13 @@ class ControladorFormularios {
 
             $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
 
+            //Encriptacion de contrasena
+            $encriptarPassword = crypt($_POST["ingresoPassword"], '$2a$07$usesomesillystringforsalt$');
+
             if (is_array($respuesta)) {
                 
                 //Si el usuario ingreso correctamente al sistema se redirigira hacia la PAGINA DE INICIO DEL SISTEMA (LINEA 68)
-                if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]) {
+                if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $encriptarPassword) {
 
                     $actualizarIntentosFallidos = ModeloFormularios::mdlActualizarIntentosFallidos($tabla, 0, $respuesta["token"]);
 
