@@ -28,6 +28,8 @@
     <!-- Latest compiled Font Awesome (6)-->
     <script src="https://kit.fontawesome.com/032c4d9b9e.js" crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 </head>
 
 <body>
@@ -164,7 +166,6 @@
     </div>
 
     <script src="vistas/js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 </body>
 

@@ -27,7 +27,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" value="<?php echo $usuario["nombre"]; ?>" placeholder="Ingresar nombre" required id="nombre" name="actualizarNombre">
+                <input type="text" class="form-control" value="<?php echo $usuario["nombre"]; ?>" placeholder="Ingresar nombre" required id="actualizarNombre" name="actualizarNombre">
             </div>
         </div>
 
@@ -37,7 +37,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
                 </div>
-                <input type="email" class="form-control" value="<?php echo $usuario["email"]; ?>" placeholder="Ingresar correo electronico" required id="email" name="actualizarEmail">
+                <input type="email" class="form-control" value="<?php echo $usuario["email"]; ?>" placeholder="Ingresar correo electronico" required id="actualizarEmail" name="actualizarEmail">
             </div>
         </div>
 
@@ -69,21 +69,28 @@
 
 			}
 
+			var datos = new FormData();
+			datos.append("validarToken", "'.$usuario["token"].'");
+
+			$.ajax({
+
+				url: "ajax/formularios.ajax.php",
+				method: "POST",
+				data: datos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success:function(respuesta){
+                    console.log(respuesta);
+					$("#actualizarNombre").val(respuesta["nombre"]);	
+					$("#actualizarEmail").val(respuesta["email"]);	
+				}
+
+			})
+
 			</script>';
 
-			echo '<div class="alert alert-success">El usuario ha sido actualizado</div>
-
-			<script>
-
-				setTimeout(function(){
-				
-					window.location = "index.php?pagina=inicio";
-
-				},2000);
-
-			</script>
-
-			';
+			echo '<div class="alert alert-success">El usuario ha sido actualizado</div>';
 
 		}
 
