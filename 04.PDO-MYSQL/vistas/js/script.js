@@ -10,13 +10,12 @@ $("#email").change(function() {
 
     $.ajax({
 
-        url:"ajax/formularios.ajax.php",
+        url: "ajax/formularios.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
         contentType: false,
-        processData: false,
-        
+        processData: false,  
         success: function(respuesta) {
             console.log("respuesta", respuesta);
         }
