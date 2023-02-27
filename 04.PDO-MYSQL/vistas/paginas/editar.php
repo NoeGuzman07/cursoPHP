@@ -51,7 +51,7 @@
                 
                 <input type="hidden" name="passwordActual" value="<?php echo $usuario["password"]; ?>">
 				<input type="hidden" name="tokenUsuario" value="<?php echo $usuario["token"]; ?>">
-                <input type="hidden" name="idUsuario" value="<?php echo $usuario["id"]; ?>">
+				<input type="hidden" name="idUsuario" value="<?php echo $usuario["id"]; ?>">
             </div>
         </div>
 
@@ -59,63 +59,72 @@
 
 		$actualizar = ControladorFormularios::ctrActualizarRegistro();
 
-		if($actualizar == "OK") {
+        if ($actualizar == "OK") {
+ 
+            $item = "id";
+            $valor = $usuario["id"];
+            $usuario = ControladorFormularios::ctrSeleccionarRegistros($item, $valor);
+       
+            echo '<script>
+                    
+                if ( window.history.replaceState ) {
+                    
+                    window.history.replaceState( null, null, window.location.href );
+                
+                }
 
-			echo '<script>
+            var datos = new FormData();
 
-			if ( window.history.replaceState ) {
+            datos.append("validarToken", "' . $usuario["token"] . '");
+            
+            $.ajax({
+            
+                url: "ajax/formularios.ajax.php",
+                method: "POST",
+                data: datos,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                
+                success:function(respuesta) {
 
-				window.history.replaceState( null, null, window.location.href );
+                    $("#actualizarNombre").val(respuesta["nombre"]);	
+                    $("#actualizarEmail").val(respuesta["email"]);
+                    
+                    $("#btnActualizar").hide();
+                    $("#btnRegresar").removeClass("d-none").addClass("d-block");
+              
+                }
 
-			}
+            })
 
-			var datos = new FormData();
-			datos.append("validarToken", "'.$usuario["token"].'");
+            </script>';
 
-			$.ajax({
+            echo '<div class="alert alert-success">El usuario ha sido actualizado</div>';
+          
+        }
+        
+        if ($actualizar == "error") {
 
-				url: "ajax/formularios.ajax.php",
-				method: "POST",
-				data: datos,
-				cache: false,
-				contentType: false,
-				processData: false,
-				success:function(respuesta){
-                    console.log(respuesta);
-					$("#actualizarNombre").val(respuesta["nombre"]);	
-					$("#actualizarEmail").val(respuesta["email"]);	
-				}
+            echo '<script>
 
-			})
+                if ( window.history.replaceState ) {
+                    
+                    window.history.replaceState( null, null, window.location.href );
+                
+                }
+            
+                </script>';
+            
+            echo '<div class="alert alert-danger">Error al actualizar el usuario</div>';
+          
+            }
+          
+          ?>
 
-			</script>';
-
-			echo '<div class="alert alert-success">El usuario ha sido actualizado</div>';
-
-		}
-
-        if($actualizar == "error") {
-
-			echo '<script>
-
-			if ( window.history.replaceState ) {
-
-				window.history.replaceState( null, null, window.location.href );
-
-			}
-
-			</script>';
-
-			echo '<div class="alert alert-danger">Error al actualizar el usuario</div>
-
-			';
-
-		}
-
-		?>
-		
-
-        <center><button type="submit" class="btn btn-primary">Actualizar</button></center>
+          <button type="submit" id="btnActualizar" class="btn btn-primary">Actualizar</button>
+          <a href="inicio" id="btnRegresar" class="btn btn-primary d-none">Regresar</a>
 
     </form>
 

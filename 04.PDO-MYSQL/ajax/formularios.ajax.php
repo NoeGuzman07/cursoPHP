@@ -3,25 +3,30 @@
 require_once "../controladores/formularios.controlador.php";
 require_once "../modelos/formularios.modelo.php";
 
-//Clase Ajax
-class AjaxFormularios {
+/*=============================================
+Clase de AJAX
+=============================================*/
 
-    //Variable publica
-    public $validarEmail;
-    
-    //Creacion de funcion para validar email existente
-    public function ajaxValidarEmail() {
+class AjaxFormularios{
 
-        $item = "email";
-        $valor = $this->validarEmail;
+	/*=============================================
+	VALIDAR EMAIL EXISTENTE
+	=============================================*/	
+	public $validarEmail;
 
-        $respuesta = ControladorFormularios::ctrSeleccionarRegistros($item, $valor);
-        //Impresion en consola
-        //echo '<pre>'; print_r($respuesta); echo '<pre>';
-        echo json_encode($respuesta);
+	public function ajaxValidarEmail(){
 
-    }
+		$item = "email";
+		$valor = $this->validarEmail;
 
+		$respuesta = ControladorFormularios::ctrSeleccionarRegistros($item, $valor);
+		
+		echo json_encode($respuesta);
+	}
+
+	/*=============================================
+	VALIDAR TOKEN EXISTENTE
+	=============================================*/	
 	public $validarToken;
 
 	public function ajaxValidarToken(){
@@ -30,14 +35,16 @@ class AjaxFormularios {
 		$valor = $this->validarToken;
 
 		$respuesta = ControladorFormularios::ctrSeleccionarRegistros($item, $valor);
-		//echo json_encode($respuesta);
-        //echo '<pre>'; print_r($respuesta); echo '<pre>';
-        var_dump($respuesta);
+		
+		echo json_encode($respuesta);
 	}
 
 }
 
-//Objeto de Ajax que recibe la variable POST de email
+/*=============================================
+Objeto de AJAX que recibe la variable POST
+=============================================*/
+
 if(isset($_POST["validarEmail"])){
 
 	$valEmail = new AjaxFormularios();
@@ -46,7 +53,10 @@ if(isset($_POST["validarEmail"])){
 
 }
 
-//Objeto de Ajax que recibe la variable POST de token
+/*=============================================
+Objeto de AJAX que recibe la variable POST
+=============================================*/
+
 if(isset($_POST["validarToken"])){
 
 	$valToken = new AjaxFormularios();

@@ -25,10 +25,11 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Latest compiled Font Awesome (6)-->
+    <!-- Latest compiled Font Awesome (6) -->
     <script src="https://kit.fontawesome.com/032c4d9b9e.js" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- JQuery para el uso de Ajax -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
 </head>
 

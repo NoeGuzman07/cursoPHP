@@ -65,8 +65,6 @@ class ControladorFormularios {
 
                 $usuario = ModeloFormularios::mdlSeleccionarRegistros("registros", "token", $_POST["tokenUsuario"]);
             
-                //$compararToken = md5($usuario["nombre"]."+".$usuario["email"]);
-
             if($usuario["token"] == $_POST["tokenUsuario"]) {
             
                 if($_POST["actualizarPassword"]!="") {
@@ -119,6 +117,7 @@ class ControladorFormularios {
 }
 
 }
+
 
     
 
